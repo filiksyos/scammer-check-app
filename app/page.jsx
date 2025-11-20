@@ -204,7 +204,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="border-t bg-white/80 backdrop-blur-sm mt-20">
         <div className="container mx-auto px-4 py-6 text-center text-gray-600 text-sm">
-          <p>Powered by Exa Search API & Azure AI • Built with Next.js</p>
+          <p>Powered by Exa Search API & OpenRouter AI • Built with Next.js</p>
         </div>
       </footer>
     </div>

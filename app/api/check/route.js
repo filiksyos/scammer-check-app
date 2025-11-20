@@ -1,14 +1,7 @@
 import { NextResponse } from 'next/server';
 import Exa from 'exa-js';
-import ModelClient from '@azure-rest/ai-inference';
-import { AzureKeyCredential } from '@azure/core-auth';
 
 const exa = new Exa(process.env.EXA_API_KEY);
-
-const aiClient = ModelClient(
-  process.env.AZURE_AI_ENDPOINT,
-  new AzureKeyCredential(process.env.AZURE_AI_API_KEY)
-);
 
 export async function POST(request) {
   try {
@@ -85,22 +78,29 @@ Scoring guidelines:
 
 Be objective and base your score on the evidence found. Include both positive and negative findings in your reasoning.`;
 
-    const response = await aiClient.path('/chat/completions').post({
-      body: {
+    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${process.env.OPENROUTER_API_KEY}`,
+      },
+      body: JSON.stringify({
+        model: 'openai/gpt-4o-mini',
         messages: [
           { role: 'system', content: 'You are a fraud detection expert providing objective analysis based on available evidence.' },
           { role: 'user', content: prompt },
         ],
         max_tokens: 1000,
         temperature: 0.3,
-      },
+      }),
     });
 
-    if (response.status !== '200') {
+    if (!response.ok) {
       throw new Error('AI analysis failed');
     }
 
-    const aiResponse = response.body.choices[0]?.message?.content;
+    const responseData = await response.json();
+    const aiResponse = responseData.choices[0]?.message?.content;
     
     // Parse AI response
     const jsonMatch = aiResponse.match(/\{[\s\S]*\}/);

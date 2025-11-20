@@ -5,7 +5,7 @@ A smart web application built with Next.js that analyzes if a person or online g
 ## Features
 
 - 🔍 **Smart Research**: Uses Exa API to search the web for information about the person
-- 🤖 **AI Analysis**: Azure AI analyzes the findings to determine scammer probability
+- 🤖 **AI Analysis**: OpenRouter AI analyzes the findings to determine scammer probability
 - 📊 **Scammer Score**: Get a percentage-based probability score
 - 🖼️ **Profile Image**: Displays the person's image (when available)
 - 📝 **Detailed Verdict**: Shows reasons and evidence for the assessment
@@ -16,7 +16,7 @@ A smart web application built with Next.js that analyzes if a person or online g
 - **Framework**: Next.js 15.3.1
 - **Styling**: Tailwind CSS 4
 - **Search**: Exa API
-- **AI Analysis**: Azure AI Services
+- **AI Analysis**: OpenRouter AI
 - **Animations**: Framer Motion
 
 ## Getting Started
@@ -26,7 +26,7 @@ A smart web application built with Next.js that analyzes if a person or online g
 - Node.js (v18 or later)
 - npm or yarn
 - Exa API Key ([Get one here](https://exa.ai/))
-- Azure AI API Key ([Get one here](https://azure.microsoft.com/en-us/solutions/ai/))
+- OpenRouter API Key ([Get one here](https://openrouter.ai/))
 
 ### Installation
 
@@ -47,9 +47,8 @@ A smart web application built with Next.js that analyzes if a person or online g
    # Exa API
    EXA_API_KEY=your_exa_api_key_here
 
-   # Azure AI
-   AZURE_AI_API_KEY=your_azure_ai_api_key_here
-   AZURE_AI_ENDPOINT=your_azure_ai_endpoint_here
+   # OpenRouter AI
+   OPENROUTER_API_KEY=your_openrouter_api_key_here
    ```
 
 4. **Run the development server:**
@@ -70,7 +69,7 @@ A smart web application built with Next.js that analyzes if a person or online g
 
 1. **Search Phase**: The app uses Exa API to search for information about the person
 2. **Data Collection**: Gathers relevant articles, reviews, and mentions
-3. **AI Analysis**: Azure AI analyzes the content for red flags, scam indicators, and legitimacy signals
+3. **AI Analysis**: OpenRouter AI analyzes the content for red flags, scam indicators, and legitimacy signals
 4. **Scoring**: Calculates a scammer probability percentage (0-100%)
 5. **Report**: Generates a detailed verdict with supporting evidence
 
@@ -79,8 +78,7 @@ A smart web application built with Next.js that analyzes if a person or online g
 | Variable | Description | Required |
 |----------|-------------|----------|
 | `EXA_API_KEY` | Your Exa API key for web search | Yes |
-| `AZURE_AI_API_KEY` | Your Azure AI API key | Yes |
-| `AZURE_AI_ENDPOINT` | Your Azure AI endpoint URL | Yes |
+| `OPENROUTER_API_KEY` | Your OpenRouter API key | Yes |
 
 ## License
 
